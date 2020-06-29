@@ -186,6 +186,8 @@ class TestController
             return;
         }
         //奥～奥～奥利给
+        //TODO 这里是获取到所有的链接，用来批量发送，实际应用中  这个肯定是不会这么做的，会自己存储用户信息 [fd,name,id]
+        //再进行一个循环，比如房间群发，就包含房间id，给用户发，那么就用name，或者id找到用户的fd，群发就是遍历
         foreach (wsServer() as $connection){
             server()->push($connection,"11111");
         }
