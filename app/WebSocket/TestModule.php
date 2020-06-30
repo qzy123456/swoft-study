@@ -30,6 +30,17 @@ class TestModule
      */
     public function onOpen(Request $request, int $fd): void
     {
+        //这个时候可以根据 url的地址进行传参  ws://127.0.0.1:18308/test?name=朝阳&id=2111
+        //如果是加密过后的  那么就是ws://127.0.0.1:18308/test?data=xaxsax2121-xsax
+        //否则就要在onMessage 这个逻辑里面增加一个 login的处理方法 用于绑定用户的 名字 ID 对应的fd的结构体，或者
+        //超大的数组里面，数据库里面，redis里面
+        print_r($request->get());
+        //Array
+        //(
+        //    [name] => 朝阳
+        //    [id] => 2111
+        //    [encoding] => text
+        //)
         Session::current()->push("Opened, welcome!(FD: $fd)");
     }
 }

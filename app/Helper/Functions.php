@@ -13,8 +13,8 @@ if (!function_exists('wsServer')) {
      */
     function wsServer(): Iterator
     {
-        if (!empty(Server()->getSwooleServer()->connections)) {
-            return Server()->getSwooleServer()->connections;
-        }
+
+      return Server()->getSwooleServer()->connections;
+
     }
 }
