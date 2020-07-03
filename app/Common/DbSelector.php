@@ -28,20 +28,23 @@ class DbSelector implements DbSelectorInterface
      */
     public function select(Connection $connection): void
     {
-        $selectIndex  = (int)context()->getRequest()->getData('id', 0);
-        print_r(context()->getData()['user'] );
+        $selectIndex  =context()->getRequest()->getQueryParams();
+        $selectIndex = isset($selectIndex['id']) ? (int)$selectIndex['id']: 0;
+        var_dump($selectIndex);
+        //print_r(context()->getData()['user'] );
         $createDbName = $connection->getDb();
+        var_dump($createDbName);
 
-        if ($selectIndex == 0) {
+        if ($selectIndex == 1) {
             $selectIndex = '';
         }
 
-        if ($createDbName == 'test2') {
+        if ($createDbName == 'test') {
             $createDbName = 'test';
         }
 
-        $dbName = sprintf('%s%s', $createDbName, (string)$selectIndex);
-
+        $dbName = sprintf('%s%s', $createDbName, $selectIndex);
+        var_dump($dbName);
         $connection->db($dbName);
     }
 }

@@ -106,8 +106,7 @@ class DbModelController
     public function getId(): int
     {
         $user = new User();
-        $user->setAge(random_int(1, 100));
-        $user->setUserDesc('desc');
+        $user->setName("cxzcxzczx");
 
         $user->save();
 
