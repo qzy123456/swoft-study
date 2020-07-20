@@ -28,12 +28,13 @@ class DbSelector implements DbSelectorInterface
      */
     public function select(Connection $connection): void
     {
+        $connection->setPoolName("db1.pool");
+        //print_r($connection);
         $selectIndex  =context()->getRequest()->getQueryParams();
         $selectIndex = isset($selectIndex['id']) ? (int)$selectIndex['id']: 0;
-        var_dump($selectIndex);
         //print_r(context()->getData()['user'] );
         $createDbName = $connection->getDb();
-        var_dump($createDbName);
+        var_dump('这是craet',$createDbName);
 
         if ($selectIndex == 1) {
             $selectIndex = '';
@@ -44,7 +45,7 @@ class DbSelector implements DbSelectorInterface
         }
 
         $dbName = sprintf('%s%s', $createDbName, $selectIndex);
-        var_dump($dbName);
+        var_dump('这是最后的db',$dbName);
         $connection->db($dbName);
     }
 }

@@ -82,7 +82,7 @@ return [
     ],
     'db1'                => [
         'class'    => Database::class,
-        'dsn'      => 'mysql:dbname=test;host=127.0.0.1',
+        'dsn'      => 'mysql:dbname=test1;host=127.0.0.1',
         'username' => 'root',
         'password' => 'root',
         'dbSelector' => bean(DbSelector::class)
@@ -93,7 +93,7 @@ return [
     ],
     'db2'                => [
         'class'    => Database::class,
-        'dsn'      => 'mysql:dbname=test;host=127.0.0.1',
+        'dsn'      => 'mysql:dbname=test1;host=127.0.0.1',
         'username' => 'root',
         'password' => 'root',
         'dbSelector' => bean(DbSelector::class)
