@@ -42,7 +42,7 @@ class DbModelController
         $id   = $this->getId();
         $user = User::find(41);
         $sql = "select * from users where id = 2";
-        print_r((new User())->getConnection()->select($sql));
+        print_r(User::getConnection()->select($sql));
 
         return $response->withData($user);
     }
