@@ -7,6 +7,7 @@ use App\Model\Logic\RequestBean;
 use App\Model\Logic\RequestBeanTwo;
 use Swoft\Bean\BeanFactory;
 use Swoft\Co;
+use Swoft\Db\DB;
 use Swoft\Http\Server\Annotation\Mapping\Controller;
 use Swoft\Http\Server\Annotation\Mapping\RequestMapping;
 
@@ -23,9 +24,16 @@ class BeanController
      * @RequestMapping("single")
      *
      * @return array
+     * @throws \Swoft\Db\Exception\DbException
      */
     public function singleton(): array
     {
+        $users = DB::table('users')->where([
+            'name'=>'123',
+            ['status','=',1],
+            ['age','>=',18]
+        ])->get();
+        var_dump($users);
         //这里调用了 App/Common/MyBean.php
         $b = BeanFactory::getBean(MyBean::class);
         return [$b->myMethod()];
