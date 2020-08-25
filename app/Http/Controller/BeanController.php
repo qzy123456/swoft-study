@@ -3,6 +3,7 @@
 namespace App\Http\Controller;
 
 use App\Common\MyBean;
+use App\Model\Entity\User;
 use App\Model\Logic\RequestBean;
 use App\Model\Logic\RequestBeanTwo;
 use Swoft\Bean\BeanFactory;
@@ -28,12 +29,13 @@ class BeanController
      */
     public function singleton(): array
     {
-        $users = DB::table('users')->where([
-            'name'=>'123',
-            ['status','=',1],
-            ['age','>=',18]
-        ])->get();
-        var_dump($users);
+//        $users = DB::table('users')->where([
+//            'name'=>'123',
+//            ['status','=',1],
+//            ['age','>=',18]
+//        ])->get();
+//        var_dump($users);
+        $user = new User();
         //这里调用了 App/Common/MyBean.php
         $b = BeanFactory::getBean(MyBean::class);
         return [$b->myMethod()];

@@ -86,7 +86,7 @@ class User extends Model
 
     public  function getConnection(): Connection
     {
-        echo "DONE";
+        echo "DONE！！！！DONE！！！！DONE！！！！";
         return DB::connection("db1.pool");
     }
 }

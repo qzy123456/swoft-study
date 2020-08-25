@@ -36,14 +36,18 @@ class DbModelController
      * @return Response
      *
      * @throws Throwable
+     *
+     *  http://127.0.0.1:18306/dbModel/find?id=1
      */
     public function find(Response $response): Response
     {
         $id   = $this->getId();
         $user = User::find(41);
+        //下面直接是请求test1库
         $sql = "select * from users where id = 2";
-        print_r(User::getConnection()->select($sql));
-
+        print_r((new User())->getConnection()->select($sql));
+        //下面直接是请求test1库的另一种方法
+        print_r(bean('db1.pool')->getConnection()->select($sql));
         return $response->withData($user);
     }
 
